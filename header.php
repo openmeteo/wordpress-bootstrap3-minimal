@@ -23,6 +23,10 @@
 
 	?></title>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_uri(); ?>" />
+<?php
+	wp_head();
+	wp_enqueue_script('bootstrap', '//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js');
+?>
 
 <div class="container-fluid" id="content">
 	<nav class="navbar navbar-blue" role="navigation">
