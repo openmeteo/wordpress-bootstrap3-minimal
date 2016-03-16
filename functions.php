@@ -86,7 +86,6 @@ if (! function_exists('register_custom_menus')) :
 		register_nav_menus(
 			array(
 				'menu2' => __('Second Menu'),
-				'menu3' => __('Third Menu'),
 			)
 		);
 	}
