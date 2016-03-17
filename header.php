@@ -29,7 +29,7 @@
 ?>
 
 <div class="container-fluid" id="content">
-	<nav class="navbar navbar-blue" role="navigation">
+	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-details" aria-expanded="false">
