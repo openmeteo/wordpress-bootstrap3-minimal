@@ -25,9 +25,6 @@
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:'), 'after' => '</div>' ) ); ?>
 					</div><!-- .entry-content -->
 
-					<div class="entry-utility">
-						<p><?php edit_post_link( __( 'Edit'), '<span class="edit-link">', '</span>' ); ?></p>
-					</div><!-- .entry-utility -->
 				</article>
 
 				<hr>

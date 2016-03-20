@@ -69,10 +69,6 @@
 				<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:'), 'after' => '</div>' ) ); ?>
 			</div><!-- .entry-content -->
 	<?php endif; ?>
-
-			<div class="entry-utility">
-				<?php edit_post_link( __( 'Edit'), '<span class="edit-link">', '</span>' ); ?>
-			</div><!-- .entry-utility -->
 		</article>
   </div>
     
