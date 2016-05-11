@@ -92,3 +92,28 @@ if (! function_exists('register_custom_menus')) {
 	}
 }
 add_action('init', 'register_custom_menus');
+
+if (! function_exists('theme_options')) {
+	function theme_options($wp_customize) {
+		$wp_customize->add_section(
+			'theme_misc_options',
+			array(
+				'title' => __('Miscellaneous settings', 'mytheme'),
+				'priority' => 100,
+				'capability' => 'edit_theme_options',
+				'description' => __('Miscellaneous settings', 'mytheme'),
+			)
+		);
+		$wp_customize->add_setting('show_search_box', array('default' => true));
+		$wp_customize->add_control('show_search_box',
+			array(
+				'label' => __('Show search box on navigation bar', 'mytheme'),
+				'section' => 'theme_misc_options',
+				'settings' => 'show_search_box',
+				'type' => 'checkbox',
+				'priority' => 10,
+			)
+		);
+	}
+}
+add_action('customize_register', 'theme_options');

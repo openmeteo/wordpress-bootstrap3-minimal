@@ -71,10 +71,16 @@
 					show_menu("menu2");
 					?>
 				</ul>
-				<form role="search" method="get" class="navbar-form navbar-right" action="<?php echo home_url( '/' ); ?>">
-					<input type="search" class="form-control" placeholder="Search" value="" name="s" size="15" />
-					<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-				</form>					
+				<?php
+					if (get_theme_mod('show_search_box')) {
+        ?>
+						<form role="search" method="get" class="navbar-form navbar-right" action="<?php echo home_url( '/' ); ?>">
+							<input type="search" class="form-control" placeholder="Search" value="" name="s" size="15" />
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+						</form>
+				<?php
+					}
+				?>
 			</div>		
 		</div>
 	</nav>
