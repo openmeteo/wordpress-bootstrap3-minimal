@@ -5,13 +5,14 @@
  * Used to set the width of images and content. Should be equal to the width the theme
  * is designed for, generally via the style.css stylesheet.
  */
-if ( ! isset( $content_width ) )
+if ( ! isset( $content_width ) ) {
 	$content_width = 640;
+}
 
 /** Tell WordPress to run bootstrapthreeminimal_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'bootstrapthreeminimal_setup' );
 
-if ( ! function_exists( 'bootstrapthreeminimal_setup' ) ):
+if ( ! function_exists( 'bootstrapthreeminimal_setup' ) ) {
 		function bootstrapthreeminimal_setup() {
 			// Make theme available for translation
 			// Translations can be filed in the /languages/ directory
@@ -27,7 +28,7 @@ if ( ! function_exists( 'bootstrapthreeminimal_setup' ) ):
 				'primary' => __( 'Primary Navigation'),
 			) );
 		}
-endif;
+}
 
 /**
  * Sets the post excerpt length to 40 characters.
@@ -64,24 +65,24 @@ function bootstrapthreeminimal_custom_excerpt_more( $output ) {
 add_filter( 'get_the_excerpt', 'bootstrapthreeminimal_custom_excerpt_more' );
 
 
-if ( ! function_exists( 'posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function posted_on() {
-	printf('<p><span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>, <a href="%4$s" title="%5$s" rel="bookmark"><span class="entry-date">%6$s</span></a></p>',
-			get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			esc_attr( sprintf( __( 'View all posts by %s'), get_the_author() ) ),
-			get_the_author(),
-			get_permalink(),
-			esc_attr( get_the_time('c') ),
-			get_the_date('j F Y')
-	);
+if ( ! function_exists( 'posted_on' ) ) {
+  /**
+   * Prints HTML with meta information for the current post-date/time and author.
+   */
+  function posted_on() {
+    printf('<p><span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>, <a href="%4$s" title="%5$s" rel="bookmark"><span class="entry-date">%6$s</span></a></p>',
+        get_author_posts_url( get_the_author_meta( 'ID' ) ),
+        esc_attr( sprintf( __( 'View all posts by %s'), get_the_author() ) ),
+        get_the_author(),
+        get_permalink(),
+        esc_attr( get_the_time('c') ),
+        get_the_date('j F Y')
+    );
+  }
 }
-endif;
 
 /* Add some nav menus for the navbar */
-if (! function_exists('register_custom_menus')) :
+if (! function_exists('register_custom_menus')) {
 	function register_custom_menus() {
 		register_nav_menus(
 			array(
@@ -89,5 +90,5 @@ if (! function_exists('register_custom_menus')) :
 			)
 		);
 	}
-endif;
+}
 add_action('init', 'register_custom_menus');
