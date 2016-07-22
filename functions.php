@@ -95,42 +95,13 @@ add_action('init', 'register_custom_menus');
 
 if (! function_exists('theme_options')) {
 	function theme_options($wp_customize) {
-        /* Option to show search box or not */
-		$wp_customize->add_section(
-			'theme_misc_options',
-			array(
-				'title' => __('Miscellaneous settings', 'mytheme'),
-				'priority' => 100,
-				'capability' => 'edit_theme_options',
-				'description' => __('Miscellaneous settings', 'mytheme'),
-			)
-		);
-		$wp_customize->add_setting('show_search_box', array('default' => true));
-		$wp_customize->add_control('show_search_box',
-			array(
-				'label' => __('Show search box on navigation bar', 'mytheme'),
-				'section' => 'theme_misc_options',
-				'settings' => 'show_search_box',
-				'type' => 'checkbox',
-				'priority' => 10,
-			)
-		);
 
         /* Color scheme */
-		$wp_customize->add_section(
-			'theme_color_options',
-			array(
-				'title' => __('Colors', 'mytheme'),
-				'priority' => 100,
-				'capability' => 'edit_theme_options',
-				'description' => __('Colors', 'mytheme'),
-			)
-		);
 		$wp_customize->add_setting('color_scheme', array('default' => 'red'));
-		$wp_customize->add_control('show_search_box',
+		$wp_customize->add_control('color_scheme',
 			array(
 				'label' => __('Color scheme', 'mytheme'),
-				'section' => 'theme_color_options',
+				'section' => 'colors',
 				'settings' => 'color_scheme',
 				'type' => 'select',
 				'choices' => array(
@@ -140,6 +111,27 @@ if (! function_exists('theme_options')) {
 				'priority' => 10,
 			)
 		);
+
+		/* Option to show search box or not */
+		$wp_customize->add_section('nav',
+			array(
+				'title' => __('Navigation', 'mytheme'),
+				'priority' => 100,
+				'capability' => 'edit_theme_options',
+				'description' => __('Navigation', 'mytheme'),
+			)
+		);
+		$wp_customize->add_setting('show_search_box', array('default' => true));
+		$wp_customize->add_control('show_search_box',
+			array(
+				'label' => __('Show search box on navigation bar', 'mytheme'),
+				'section' => 'nav',
+				'settings' => 'show_search_box',
+				'type' => 'checkbox',
+				'priority' => 20,
+			)
+		);
+
 	}
 }
 add_action('customize_register', 'theme_options');
