@@ -6778,6 +6778,11 @@ article img {
   max-width: 100%;
   height: auto;
 }
+page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 .alignleft {
   float: left !important;
   margin: 0.5em 1.5em 1em 0;
