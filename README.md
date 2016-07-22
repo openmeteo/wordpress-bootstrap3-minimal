@@ -3,14 +3,7 @@ Bootstrap3 minimal wordpress skin
 
 Contains no comments, no sidebar, no widgets.
 
-Its navigation bar has a hack: it contains two menus, the first of which
-is "Blog", having the categories as submenus, and the second of which is
-"About", which contains the primary menu as a submenu. I couldn't find a
-way in Wordpress of specifying all the categories as a submenu of a
-menu (otherwise I could have simply used the primary menu in the
-navbar).
-
-© 2015 Antonis Christofides
+© 2015–2016 Antonis Christofides
 
 © 2010 The guys who made theme twenty ten (some of whose code has been
 copied).
