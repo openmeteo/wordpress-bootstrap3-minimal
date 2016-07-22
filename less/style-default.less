@@ -1,0 +1,88 @@
+@import "bootstrap/bootstrap.less";
+
+@icon-font-path: "//netdna.bootstrapcdn.com/bootstrap/3.3.4/fonts/";
+@screen-sm-min: 550px;
+@blockquote-font-size: @font-size-base;
+@panel-bg: none;
+
+@font-size-h1: @font-size-base * 1.5;
+@font-size-h2: @font-size-base * 1.3;
+@font-size-h3: @font-size-base * 1.2;
+@font-size-h4: @font-size-base * 1.1;
+@font-size-h5: @font-size-base;
+
+#content {
+  max-width: 40em;
+}
+
+@media(min-width: @screen-sm-min) {
+    #navbar-details form {
+      padding-right: 0;
+    }
+}
+
+.panel-post {
+  .panel-default;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.page-title {
+  .text-muted;
+  font-size: (@font-size-base * 1.7);
+  margin-bottom: 1em;
+}
+
+.entry-title {
+  font-size: (@font-size-base * 1.7);
+}
+
+.entry-title a {
+  color: @headings-color;
+}
+
+.entry-meta, .entry-meta a {
+  .text-muted;
+}
+
+article img {
+  .img-responsive;
+}
+
+.alignleft {
+  .pull-left;
+  margin: 0.5em 1.5em 1em 0;
+}
+
+.alignright {
+  .pull-right;
+  margin: 0.5em 0 1.5em 1em;
+}
+
+.aligncenter {
+  .center-block;
+  margin: 1.6em auto;
+}
+
+.wp-caption-text {
+  .text-muted;
+  .text-center;
+}
+
+.navigation {
+  .btn-group;
+  .btn-group-justified;
+  .row;
+}
+
+.navigation a {
+  .btn;
+  .btn-default;
+  white-space: normal;
+  background: none;
+}
+
+article.index {
+  .panel;
+  .panel-default;
+}

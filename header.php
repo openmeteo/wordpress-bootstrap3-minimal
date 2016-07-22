@@ -22,14 +22,26 @@
 		echo ' | ' . sprintf( __( 'Page %s'), max( $paged, $page ) );
 
 	?></title>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_uri(); ?>" />
+<?php
+	$color_scheme = get_theme_mod("color_scheme");
+	if (! $color_scheme) {
+		$color_scheme = "red";
+	}
+?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_stylesheet_directory_uri() . "/style-" . $color_scheme . ".css"; ?>" />
 <?php
 	wp_head();
 	wp_enqueue_script('bootstrap', '//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', array('jquery'));
 ?>
 
 <div class="container-fluid" id="content">
-	<nav class="navbar navbar-inverse" role="navigation">
+<?php
+	switch ($color_scheme) {
+		case "red": $navbar_style = "inverse"; break;
+		default: $navbar_style = $color_scheme; break;
+	}
+?>
+	<nav class='navbar <?php echo "navbar-" . $navbar_style; ?>' role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-details" aria-expanded="false">

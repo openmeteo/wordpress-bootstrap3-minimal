@@ -95,6 +95,7 @@ add_action('init', 'register_custom_menus');
 
 if (! function_exists('theme_options')) {
 	function theme_options($wp_customize) {
+        /* Option to show search box or not */
 		$wp_customize->add_section(
 			'theme_misc_options',
 			array(
@@ -111,6 +112,31 @@ if (! function_exists('theme_options')) {
 				'section' => 'theme_misc_options',
 				'settings' => 'show_search_box',
 				'type' => 'checkbox',
+				'priority' => 10,
+			)
+		);
+
+        /* Color scheme */
+		$wp_customize->add_section(
+			'theme_color_options',
+			array(
+				'title' => __('Colors', 'mytheme'),
+				'priority' => 100,
+				'capability' => 'edit_theme_options',
+				'description' => __('Colors', 'mytheme'),
+			)
+		);
+		$wp_customize->add_setting('color_scheme', array('default' => 'red'));
+		$wp_customize->add_control('show_search_box',
+			array(
+				'label' => __('Color scheme', 'mytheme'),
+				'section' => 'theme_color_options',
+				'settings' => 'color_scheme',
+				'type' => 'select',
+				'choices' => array(
+					'default' => 'Default',
+					'red' => 'Red',
+				),
 				'priority' => 10,
 			)
 		);
