@@ -6770,12 +6770,7 @@ button.close {
 .entry-meta a {
   color: #777777;
 }
-article img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-page img {
+.entry-content img {
   display: block;
   max-width: 100%;
   height: auto;
