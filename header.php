@@ -34,13 +34,13 @@
 	wp_enqueue_script('bootstrap', '//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', array('jquery'));
 ?>
 
-<div class="container-fluid" id="content">
 <?php
 	switch ($color_scheme) {
 		case "red": $navbar_style = "inverse"; break;
 		default: $navbar_style = $color_scheme; break;
 	}
 ?>
+<header id="top" class="bs-docs-nav navbar navbar-static-top">
 	<nav class='navbar <?php echo "navbar-" . $navbar_style; ?>' role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -73,6 +73,9 @@
 			</div>
 		</div>
 	</nav>
+</header>
+
+<main class="container-fluid" id="content">
 
 	<div class="container-fluid">
 		<div class="row">

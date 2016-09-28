@@ -1,4 +1,4 @@
-	</div><!-- #main -->
+	</main>
 </div>
 </div>
 </div>
