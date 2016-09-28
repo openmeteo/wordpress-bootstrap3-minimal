@@ -53,39 +53,16 @@
 				<a class="navbar-brand" href="<?php echo home_url('/'); ?>"><?php echo bloginfo('name'); ?></a>
 			</div>
 			<div id="navbar-details" class='collapse navbar-collapse'>
-				<ul class="nav navbar-nav">
-					<?php
-
-					function show_menu($location) {
-						$menu_locations = get_nav_menu_locations();
-						if (!array_key_exists($location, $menu_locations)) {
-							return;
-						}
-						$menu = wp_get_nav_menu_object($menu_locations[$location]);
-						if (!$menu) {
-							return;
-						}
-						echo '<li class="dropdown">';
-						echo '<a class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" href="#">';
-						echo $menu->name;
-						echo '<span class="caret"></span>';
-						echo '</a>';
-						wp_nav_menu(array(
-							'container' => false,
-							'menu_class' => 'dropdown-menu',
-							'theme_location' => $location,
-							'depth' => 2
-						));
-						echo '</li>';
-					}
-
-					show_menu("primary");
-					show_menu("menu2");
-					?>
-				</ul>
+				<?php
+					wp_nav_menu(array(
+						'theme_location' => 'primary',
+						'container' => false,
+						'menu_class' => 'nav navbar-nav',
+						'walker' => new My_Walker_Nav_Menu));
+				?>
 				<?php
 					if (get_theme_mod('show_search_box')) {
-        ?>
+				?>
 						<form role="search" method="get" class="navbar-form navbar-right" action="<?php echo home_url( '/' ); ?>">
 							<input type="search" class="form-control" placeholder="Search" value="" name="s" size="15" />
 							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -93,7 +70,7 @@
 				<?php
 					}
 				?>
-			</div>		
+			</div>
 		</div>
 	</nav>
 

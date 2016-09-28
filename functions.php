@@ -81,18 +81,6 @@ if ( ! function_exists( 'posted_on' ) ) {
   }
 }
 
-/* Add some nav menus for the navbar */
-if (! function_exists('register_custom_menus')) {
-	function register_custom_menus() {
-		register_nav_menus(
-			array(
-				'menu2' => __('Second Menu'),
-			)
-		);
-	}
-}
-add_action('init', 'register_custom_menus');
-
 if (! function_exists('theme_options')) {
 	function theme_options($wp_customize) {
 
@@ -135,3 +123,63 @@ if (! function_exists('theme_options')) {
 	}
 }
 add_action('customize_register', 'theme_options');
+
+
+/* Navigation bar
+ *
+ * We need to make some changes to the way wp_nav_menu renders a menu
+ * by default, in order to make it as bootstrap wants it. First, if a
+ * menu item has a submenu, it needs to have the "dropdown" class;
+ * this is done by a 'nav_menu_css_class' filter. Second, such a menu
+ * item must have a downwards pointing arrow; this is done by a
+ * 'nav_menu_item_args' filter. Third, such a menu item must have
+ * several attributes set on its "a" element, which is done by a
+ * 'nav_menu_link_attributes' filter. Finally, the "ul" wrapper for
+ * the submenu must have the "dropdown-menu" class; this is done by
+ * subclassing Walker_Nav_Menu and redefining a function in the
+ * subclass. When wp_nav_menu is called in header.php, it specifies
+ * that walker subclass.
+ */
+
+function menu_add_class_for_dropdown( $classes, $item, $args, $depth ) {
+	if (in_array('menu-item-has-children', $classes)) {
+		$classes['dropdown'] = 'dropdown';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'menu_add_class_for_dropdown', 10, 4 );
+
+
+function menu_add_caret_to_dropdown( $args, $item, $depth ) {
+	if (in_array('menu-item-has-children', $item->classes)) {
+		$args->link_after = '<span class="caret"></span>';
+	} else {
+		$args->link_after = '';
+	}
+	return $args;
+}
+add_filter( 'nav_menu_item_args', 'menu_add_caret_to_dropdown', 10, 3 );
+
+
+function menu_set_link_attributes_for_dropdown( $atts, $item, $args ) {
+	if (in_array('menu-item-has-children', $item->classes)) {
+		$atts['aria-expanded'] = 'false';
+		$atts['aria-haspopup'] = 'true';
+		$atts['role'] = 'button';
+		$atts['data-toggle'] = 'dropdown';
+		$atts['href'] = '#';
+		$item->classes[] = 'dropdown-toggle';
+	}
+	return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'menu_set_link_attributes_for_dropdown', 10, 3 );
+
+
+class My_Walker_Nav_Menu extends Walker_Nav_Menu {
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class=\"sub-menu dropdown-menu\">\n";
+	}
+}
+
+/* End navigation bar */
