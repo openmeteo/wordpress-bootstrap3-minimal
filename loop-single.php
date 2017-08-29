@@ -29,11 +29,13 @@
 
 				<hr>
 
+				<!--
 				<p class="categories text-muted">
 					Categories: <?php the_category(', '); ?>
 				</p>
 
 				<hr>
+				-->
 
 				<nav id="nav-below" class="row navigation">
 					<div class="col-xs-6"><?php previous_post_link( '%link', '&larr; %title', true ); ?></div>
