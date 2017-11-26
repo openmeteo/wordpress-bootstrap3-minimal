@@ -1,5 +1,5 @@
-	</main>
-</div>
-</div>
-</div>
+            </div>
+        </div>
+    </div>
+</main>
 <?php wp_footer();?>
