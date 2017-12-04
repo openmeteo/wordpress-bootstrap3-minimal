@@ -2,7 +2,7 @@
         </div>
     </div>
 </main>
-<footer style="position: absolute; bottom: 0; left:0; width: 100%; margin-bottom: 0 !important;" class="well well-sm text-center">
+<footer style="left:0; width: 100%;" class="well well-sm text-center">
   <ul class="list-inline small" style="padding-top: 1em">
     <li>
       <img alt="Ευρωπαϊκή Ένωση" width="100" height="70"
